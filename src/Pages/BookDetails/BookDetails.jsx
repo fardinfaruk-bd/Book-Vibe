@@ -11,9 +11,8 @@ const BookDetails = () => {
 
     const expectedBook = books.find(book => book.bookId == bookId);
 
-    const { HandleRead } = useContext(BookContext);
+    const { HandleRead, HandleWishlist } = useContext(BookContext);
     
-
     
 
 
@@ -53,7 +52,7 @@ const BookDetails = () => {
 
                     <div className='flex items-center gap-2'>
                         <button className="btn" onClick={() => HandleRead(expectedBook)}>Read</button>
-                        <button className="btn text-white bg-[#59C6D2]">Wishlist</button>
+                        <button className="btn text-white bg-[#59C6D2]" onClick={() => HandleWishlist(expectedBook)}>Wishlist</button>
                     </div>
                 </div>
             </div>
