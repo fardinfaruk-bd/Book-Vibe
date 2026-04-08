@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../Context/BookContext';
+
 
 
 const BookDetails = () => {
     const books = useLoaderData();
-    console.log(books, "Books");
 
     const { bookId } = useParams();
-    console.log(bookId);
 
     const expectedBook = books.find(book => book.bookId == bookId);
-    console.log(expectedBook, "expectedBook");
+
+    const { HandleRead } = useContext(BookContext);
+    
+
+    
+
+
     return (
         <div className="grid grid-cols-2 bg-base-100 shadow-sm container mx-auto my-8">
             <figure className='flex items-center justify-center bg-gray-100'>
@@ -46,7 +52,7 @@ const BookDetails = () => {
                     </div>
 
                     <div className='flex items-center gap-2'>
-                        <button className="btn">Read</button>
+                        <button className="btn" onClick={() => HandleRead(expectedBook)}>Read</button>
                         <button className="btn text-white bg-[#59C6D2]">Wishlist</button>
                     </div>
                 </div>
